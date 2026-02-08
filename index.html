@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hey Love 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffe6ec);
+      color: #333;
+      text-align: center;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #c2185b;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .btns {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 14px 26px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .yes {
+      background-color: #e91e63;
+      color: white;
+    }
+
+    .no {
+      background-color: #ddd;
+    }
+
+    #final {
+      display: none;
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 24px;
+      animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-200px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <h1>Hey love 💌</h1>
+    <p>
+      I made something just for you.<br>
+      Because six months with you deserves more than just a message.
+    </p>
+  </section>
+
+  <section>
+    <h2>March 8 ❤️</h2>
+    <p>
+      Six months ago, something really special started.<br><br>
+      I didn’t know how much you’d end up meaning to me,
+      but here we are… and I wouldn’t trade this for anything.
+    </p>
+  </section>
+
+  <section>
+    <p>
+      You make my normal days better.<br>
+      My bad days lighter.<br>
+      And my best days even brighter.
+    </p>
+    <p>
+      I love your smile.<br>
+      I love your laugh.<br>
+      And yes… even when you’re a little annoying 😌
+    </p>
+  </section>
+
+  <section>
+    <h2>So I have a question…</h2>
+    <h1>Will you be my Valentine? 💕</h1>
+
+    <div class="btns">
+      <button class="yes" onclick="sayYes()">Yes 💖</button>
+      <button class="no" onmouseover="moveButton(this)">No 😏</button>
+    </div>
+  </section>
+
+  <section id="final">
+    <h1>Happy 6 Months, My Valentine 💘</h1>
+    <p>
+      I knew it 😌<br><br>
+      I’m so lucky to have you.<br>
+      I can’t wait to make more memories together ❤️
+    </p>
+  </section>
+
+  <script>
+    function sayYes() {
+      document.getElementById("final").style.display = "flex";
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+
+      for (let i = 0; i < 30; i++) {
+        createHeart();
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "0px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 3000);
+    }
+
+    function moveButton(btn) {
+      btn.style.position = "absolute";
+      btn.style.top = Math.random() * 80 + "vh";
+      btn.style.left = Math.random() * 80 + "vw";
+    }
+  </script>
+
+</body>
+</html>
