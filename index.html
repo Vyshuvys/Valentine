@@ -14,13 +14,12 @@
       background: linear-gradient(to bottom, #fff0f5, #ffe6ec);
       color: #333;
       text-align: center;
-      overflow-x: hidden;
     }
 
     section {
       padding: 120px 20px;
       max-width: 900px;
-      margin: 0 auto;
+      margin: auto;
     }
 
     h1, h2 {
@@ -29,182 +28,13 @@
     }
 
     h1 {
-      font-size: 2.6em;
+      font-size: 2.5em;
       margin-bottom: 20px;
     }
 
     p {
       font-size: 1.15em;
       line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    button {
-      padding: 14px 30px;
-      border-radius: 30px;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      margin: 10px;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    .yes {
-      background: #e91e63;
-      color: white;
-    }
-
-    .no {
-      background: #ddd;
-    }
-
-    img {
-      max-width: 80%;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      margin-top: 30px;
-    }
-
-    #final {
-      display: none;
-    }
-
-    .heart {
-      position: fixed;
-      bottom: 0;
-      font-size: 24px;
-      animation: floatUp 3s linear forwards;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-250px); opacity: 0; }
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🎵 Music -->
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-</audio>
-
-<section>
-  <h1>Hey Chandni 💌</h1>
-  <p>
-    I made something just for you.<br>
-    Because what we have deserves more than just a message.
-  </p>
-  <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
-</section>
-
-<section>
-  <h2>March 8 ❤️</h2>
-  <p>
-    Six months ago, something really special started.<br><br>
-    From our laughs to the quiet moments,<br>
-    you slowly became my favorite part of every day.
-  </p>
-</section>
-
-<section>
-  <h2>Our 6 Months In 💕</h2>
-  <h1 id="countdown">Loading...</h1>
-</section>
-
-<section>
-  <h2>One of My Favorite Moments 📸</h2>
-  <img src="us.jpg" alt="Us together">
-</section>
-
-<section>
-  <h2>Chandni ❤️</h2>
-  <p>
-    Our 6 months anniversary is nearby,<br>
-    and it made me think about how lucky I am.
-  </p>
-
-  <h1>
-    Will you be my Valentine<br>
-    this Valentine’s Day? 💕
-  </h1>
-
-  <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
-  <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
-
-  <p id="oops" style="display:none; color:#c2185b; font-size:1.2em;">
-    Oops… wrong move 😌
-  </p>
-</section>
-
-<section id="final">
-  <h1>Happy 6 Months, Chandni 💘</h1>
-  <p>
-    I knew it 😌<br><br>
-    Thank you for being my Valentine.<br>
-    I can’t wait to make many more memories with you ❤️
-  </p>
-  <p>Screenshot this and send it to me 😏💖</p>
-</section>
-
-<script>
-  function startMusic() {
-    document.getElementById("bgMusic").play();
-  }
-
-  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "It’s today 💘";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-
-    document.getElementById("countdown").innerHTML =
-      `${days} Days ${hours} Hours ${mins} Minutes`;
-  }, 1000);
-
-  function sayYes() {
-    document.getElementById("final").style.display = "block";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-
-    for (let i = 0; i < 30; i++) createHeart();
-  }
-
-  function wrongMove() {
-    document.getElementById("oops").style.display = "block";
-    document.getElementById("noBtn").remove();
-
-    const yesBtn = document.getElementById("yesBtn");
-    yesBtn.innerHTML = "YES 😤💖";
-    yesBtn.style.transform = "scale(1.2)";
-  }
-
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 3000);
-  }
-</script>
-
-</body>
-</html>      line-height: 1.8;
       margin-bottom: 16px;
     }
 
@@ -248,10 +78,10 @@
       position: fixed;
       bottom: 0;
       font-size: 24px;
-      animation: float 3s linear forwards;
+      animation: floatUp 3s linear forwards;
     }
 
-    @keyframes float {
+    @keyframes floatUp {
       from { transform: translateY(0); opacity: 1; }
       to { transform: translateY(-250px); opacity: 0; }
     }
@@ -266,7 +96,10 @@
 
 <section>
   <h1>Hey Chandni 💌</h1>
-  <p>I made something just for you.</p>
+  <p>
+    I made something just for you.<br>
+    Because what we have deserves more than just a message.
+  </p>
   <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
 </section>
 
@@ -274,7 +107,8 @@
   <h2>March 8 ❤️</h2>
   <p>
     Six months ago, something really special started.<br>
-    You became my favorite part of every day.
+    From our laughs to the quiet moments,<br>
+    you became my favorite part of every day.
   </p>
 </section>
 
@@ -285,20 +119,28 @@
 
 <section>
   <h2>One of My Favorite Moments 📸</h2>
-  <img src="us.jpg">
+  <img src="us.jpg" alt="Us together">
 </section>
 
 <section>
   <h2>Chandni ❤️</h2>
   <h1>Will you be my Valentine? 💕</h1>
+
   <button class="yes" onclick="sayYes()">Yes 💖</button>
   <button class="no" onclick="wrongMove()">No 😏</button>
-  <p id="oops" style="display:none;">Oops… wrong move 😌</p>
+
+  <p id="oops" style="display:none; color:#c2185b;">
+    Oops… wrong move 😌
+  </p>
 </section>
 
 <section id="final">
   <h1>Happy 6 Months ❤️</h1>
-  <p>You make everything better.</p>
+  <p>
+    Thank you for being my Valentine.<br>
+    I can’t wait to make many more memories with you.
+  </p>
+
   <button class="yes" onclick="showGallery()">
     Click here for our little but best moments 💕
   </button>
@@ -306,13 +148,22 @@
 
 <section id="gallery">
   <img src="pic1.jpg">
-  <p class="caption">Always — I always dreamed of resting on each other’s shoulders.</p>
+  <p class="caption">
+    Always — I always dreamed of moments where we could rest,
+    laying on each other’s shoulders.
+  </p>
 
   <img src="pic2.jpg">
-  <p class="caption">And — I want you to know you matter more than you think.</p>
+  <p class="caption">
+    And — I want you to know that every little thing about you
+    matters to me.
+  </p>
 
   <img src="pic3.jpg">
-  <p class="caption">Forever — No matter where life takes us, we are forever.</p>
+  <p class="caption">
+    Forever — No matter where life takes us,
+    I believe we are forever.
+  </p>
 </section>
 
 <script>
@@ -334,204 +185,6 @@
   }
 
   function createHeart() {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "❤️";
-    h.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 3000);
-  }
-
-  const target = new Date("March 8, 2026").getTime();
-  setInterval(() => {
-    const now = new Date().getTime();
-    const d = target - now;
-    document.getElementById("countdown").innerHTML =
-      Math.floor(d / (1000 * 60 * 60 * 24)) + " Days";
-  }, 1000);
-</script>
-
-</body>
-</html>      font-size: 1.15em;
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
-
-    button {
-      padding: 14px 30px;
-      border-radius: 30px;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      margin: 10px;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    .yes { background: #e91e63; color: white; }
-    .no { background: #ddd; }
-
-    img {
-      max-width: 80%;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      margin-top: 25px;
-    }
-
-    .caption {
-      font-style: italic;
-      color: #6a1b4d;
-      margin-top: 10px;
-      font-size: 1.05em;
-    }
-
-    #final, #gallery, #galleryBtn {
-      display: none;
-    }
-
-    /* Hearts */
-    .heart {
-      position: fixed;
-      bottom: 0;
-      font-size: 24px;
-      animation: floatUp 3s linear forwards;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-250px); opacity: 0; }
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🎵 Music -->
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-</audio>
-
-<section>
-  <h1>Hey Chandni 💌</h1>
-  <p>
-    I made something just for you.<br>
-    Because what we have deserves more than just a message.
-  </p>
-  <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
-</section>
-
-<section>
-  <h2>March 8 ❤️</h2>
-  <p>
-    Six months ago, something really special started.<br><br>
-    From our laughs to the quiet moments,<br>
-    you slowly became my favorite part of every day.
-  </p>
-</section>
-
-<section>
-  <h2>Our 6 Months In 💕</h2>
-  <h1 id="countdown">Loading...</h1>
-</section>
-
-<section>
-  <h2>One of My Favorite Moments 📸</h2>
-  <img src="us.jpg" alt="Us together">
-</section>
-
-<section>
-  <h2>Chandni ❤️</h2>
-  <p>
-    Our 6 months anniversary is nearby,<br>
-    and it made me think about how lucky I am.
-  </p>
-
-  <h1>
-    Will you be my Valentine<br>
-    this Valentine’s Day? 💕
-  </h1>
-
-  <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
-  <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
-
-  <p id="oops" style="display:none; color:#c2185b; font-size:1.2em;">
-    Oops… wrong move 😌
-  </p>
-</section>
-
-<section id="final">
-  <h1>Happy 6 Months, Chandni 💘</h1>
-  <p>
-    I knew it 😌<br><br>
-    Thank you for being my Valentine.<br>
-    I can’t wait to make many more memories with you ❤️
-  </p>
-
-  <button class="yes" id="galleryBtn" onclick="showGallery()">
-    Click here for our little but best moments 💕
-  </button>
-</section>
-
-<section id="gallery">
-  <img src="pic1.jpg">
-  <p class="caption">
-    Always — I always dreamed of moments where we could rest,
-    laying on each other’s shoulders, feeling calm and safe.
-  </p>
-
-  <img src="pic2.jpg">
-  <p class="caption">
-    And — I want you to know that every little thing about you
-    matters to me more than you realize.
-  </p>
-
-  <img src="pic3.jpg">
-  <p class="caption">
-    Forever — No matter where life takes us,
-    I believe that we are forever.
-  </p>
-</section>
-
-<script>
-  function startMusic() {
-    document.getElementById("bgMusic").play();
-  }
-
-  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "It’s today 💘";
-      return;
-    }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById("countdown").innerHTML = `${days} Days`;
-  }, 1000);
-
-  function sayYes() {
-    document.getElementById("final").style.display = "block";
-    document.getElementById("galleryBtn").style.display = "inline-block";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-
-    for (let i = 0; i < 30; i++) createHeart();
-  }
-
-  function showGallery() {
-    document.getElementById("gallery").style.display = "block";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-  }
-
-  function wrongMove() {
-    document.getElementById("oops").style.display = "block";
-    document.getElementById("noBtn").remove();
-    document.getElementById("yesBtn").innerHTML = "YES 😤💖";
-  }
-
-  function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "❤️";
@@ -539,773 +192,15 @@
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 3000);
   }
-</script>
 
-</body>
-</html>      font-size: 1.15em;
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    button {
-      padding: 14px 30px;
-      border-radius: 30px;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      margin: 10px;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    .yes {
-      background: #e91e63;
-      color: white;
-    }
-
-    .no {
-      background: #ddd;
-    }
-
-    img {
-      max-width: 80%;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      margin-top: 30px;
-    }
-
-    .caption {
-      font-style: italic;
-      color: #6a1b4d;
-      margin-top: 12px;
-      font-size: 1.05em;
-    }
-
-    #final {
-      display: none;
-    }
-
-    /* ❤️ Hearts */
-    .heart {
-      position: fixed;
-      bottom: 0;
-      font-size: 24px;
-      animation: floatUp 3s linear forwards;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-250px); opacity: 0; }
-    }
-
-    /* 🔒 Hidden Gallery */
-    #gallery {
-      display: none;
-      background: linear-gradient(to bottom, #ffe6ec, #fff0f5);
-    }
-
-    #gallery img {
-      width: 250px;
-      max-width: 90%;
-      margin-top: 25px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🎵 Music -->
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-</audio>
-
-<section>
-  <h1>Hey Chandni 💌</h1>
-  <p>
-    I made something just for you.<br>
-    Because what we have deserves more than just a message.
-  </p>
-  <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
-</section>
-
-<section>
-  <h2>March 8 ❤️</h2>
-  <p>
-    Six months ago, something really special started.<br><br>
-    From our laughs to the quiet moments,<br>
-    you slowly became my favorite part of every day.
-  </p>
-</section>
-
-<section>
-  <h2>Our 6 Months In 💕</h2>
-  <h1 id="countdown">Loading...</h1>
-</section>
-
-<section>
-  <h2>One of My Favorite Moments 📸</h2>
-  <img src="us.jpg" alt="Us together">
-</section>
-
-<section>
-  <h2>Chandni ❤️</h2>
-  <p>
-    Our 6 months anniversary is nearby,<br>
-    and it made me think about how lucky I am.
-  </p>
-
-  <h1>
-    Will you be my Valentine<br>
-    this Valentine’s Day? 💕
-  </h1>
-
-  <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
-  <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
-
-  <p id="oops" style="display:none; color:#c2185b; font-size:1.2em;">
-    Oops… wrong move 😌
-  </p>
-</section>
-
-<section id="final">
-  <h1>Happy 6 Months, Chandni 💘</h1>
-  <p>
-    I knew it 😌<br><br>
-    Thank you for being my Valentine.<br>
-    I can’t wait to make many more memories with you ❤️
-  </p>
-  <p>Screenshot this and send it to me 😏💖</p>
-</section>
-
-<!-- 🔐 QR-ONLY GALLERY -->
-<section id="gallery">
-  <h1>Our Little Memories 📸</h1>
-
-  <img src="pic1.jpg">
-  <p class="caption">
-    Always — I always dreamed of moments where we could rest,
-    laying on each other’s shoulders, feeling calm and safe.
-  </p>
-
-  <img src="pic2.jpg">
-  <p class="caption">
-    And — I want you to know that every little thing about you
-    matters to me more than you realize.
-  </p>
-
-  <img src="pic3.jpg">
-  <p class="caption">
-    Forever — No matter where life takes us,
-    I believe that we are forever.
-  </p>
-</section>
-
-<script>
-  function startMusic() {
-    document.getElementById("bgMusic").play();
-  }
-
-  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
-
+  const targetDate = new Date("March 8, 2026").getTime();
   setInterval(() => {
     const now = new Date().getTime();
     const diff = targetDate - now;
-
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "It’s today 💘";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-
     document.getElementById("countdown").innerHTML =
-      `${days} Days ${hours} Hours ${mins} Minutes`;
+      Math.floor(diff / (1000 * 60 * 60 * 24)) + " Days";
   }, 1000);
-
-  function sayYes() {
-    document.getElementById("final").style.display = "block";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-
-    for (let i = 0; i < 30; i++) createHeart();
-  }
-
-  function wrongMove() {
-    document.getElementById("oops").style.display = "block";
-    document.getElementById("noBtn").remove();
-
-    const yesBtn = document.getElementById("yesBtn");
-    yesBtn.innerHTML = "YES 😤💖";
-    yesBtn.style.transform = "scale(1.2)";
-  }
-
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 3000);
-  }
-
-  /* 🔑 Show gallery ONLY if opened via QR */
-  if (window.location.hash === "#gallery") {
-    document.getElementById("gallery").style.display = "block";
-    window.scrollTo(0, document.body.scrollHeight);
-  }
 </script>
-
-</body>
-</html>      font-size: 1.15em;
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    button {
-      padding: 14px 30px;
-      border-radius: 30px;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      margin: 10px;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    .yes {
-      background: #e91e63;
-      color: white;
-    }
-
-    .no {
-      background: #ddd;
-    }
-
-    img {
-      max-width: 80%;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      margin-top: 30px;
-    }
-
-    .caption {
-      font-style: italic;
-      color: #6a1b4d;
-      margin-top: 12px;
-      font-size: 1.05em;
-    }
-
-    #final {
-      display: none;
-    }
-
-    .heart {
-      position: fixed;
-      bottom: 0;
-      font-size: 24px;
-      animation: floatUp 3s linear forwards;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-250px); opacity: 0; }
-    }
-
-    /* Gallery */
-    #gallery img {
-      width: 250px;
-      max-width: 90%;
-      margin-top: 25px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🎵 Music -->
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-</audio>
-
-<section>
-  <h1>Hey Chandni 💌</h1>
-  <p>
-    I made something just for you.<br>
-    Because what we have deserves more than just a message.
-  </p>
-  <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
-</section>
-
-<section>
-  <h2>March 8 ❤️</h2>
-  <p>
-    Six months ago, something really special started.<br><br>
-    From our laughs to the quiet moments,<br>
-    you slowly became my favorite part of every day.
-  </p>
-</section>
-
-<section>
-  <h2>Our 6 Months In 💕</h2>
-  <h1 id="countdown">Loading...</h1>
-</section>
-
-<section>
-  <h2>One of My Favorite Moments 📸</h2>
-  <img src="us.jpg" alt="Us together">
-</section>
-
-<section>
-  <h2>Chandni ❤️</h2>
-  <p>
-    Our 6 months anniversary is nearby,<br>
-    and it made me think about how lucky I am.
-  </p>
-
-  <h1>
-    Will you be my Valentine<br>
-    this Valentine’s Day? 💕
-  </h1>
-
-  <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
-  <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
-
-  <p id="oops" style="display:none; color:#c2185b; font-size:1.2em;">
-    Oops… wrong move 😌
-  </p>
-</section>
-
-<section id="final">
-  <h1>Happy 6 Months, Chandni 💘</h1>
-  <p>
-    I knew it 😌<br><br>
-    Thank you for being my Valentine.<br>
-    I can’t wait to make many more memories with you ❤️
-  </p>
-  <p>Screenshot this and send it to me 😏💖</p>
-</section>
-
-<!-- 🔒 Hidden Gallery (QR Section) -->
-<section id="gallery">
-  <h1>Our Little Memories 📸</h1>
-  <p>
-    These moments are just ours.<br>
-    Each one means more than it looks ❤️
-  </p>
-
-  <img src="pic1.jpg">
-  <p class="caption">
-    Always — I always wanted moments where we could just rest,
-    laying on each other’s shoulders, feeling safe and calm.
-  </p>
-
-  <img src="pic2.jpg">
-  <p class="caption">
-    And — I want you to know that every little thing about you
-    matters to me more than you realize.
-  </p>
-
-  <img src="pic3.jpg">
-  <p class="caption">
-    Forever — No matter where life takes us,
-    I believe that we are forever.
-  </p>
-</section>
-
-<script>
-  function startMusic() {
-    document.getElementById("bgMusic").play();
-  }
-
-  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "It’s today 💘";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-
-    document.getElementById("countdown").innerHTML =
-      `${days} Days ${hours} Hours ${mins} Minutes`;
-  }, 1000);
-
-  function sayYes() {
-    document.getElementById("final").style.display = "block";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-
-    for (let i = 0; i < 30; i++) createHeart();
-  }
-
-  function wrongMove() {
-    document.getElementById("oops").style.display = "block";
-    document.getElementById("noBtn").remove();
-
-    const yesBtn = document.getElementById("yesBtn");
-    yesBtn.innerHTML = "YES 😤💖";
-    yesBtn.style.transform = "scale(1.2)";
-  }
-
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 3000);
-  }
-</script>
-
-</body>
-</html>      font-size: 1.15em;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    button {
-      padding: 14px 30px;
-      border-radius: 30px;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      margin: 10px;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    .yes {
-      background: #e91e63;
-      color: white;
-    }
-
-    .no {
-      background: #ddd;
-    }
-
-    img {
-      max-width: 80%;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      margin-top: 30px;
-    }
-
-    #final {
-      display: none;
-    }
-
-    .heart {
-      position: fixed;
-      bottom: 0;
-      font-size: 24px;
-      animation: floatUp 3s linear forwards;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-250px); opacity: 0; }
-    }
-
-    /* Gallery */
-    #gallery img {
-      width: 250px;
-      max-width: 90%;
-      margin: 15px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🎵 Music -->
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-</audio>
-
-<section>
-  <h1>Hey Chandni 💌</h1>
-  <p>
-    I made something just for you.<br>
-    Because what we have deserves more than just a message.
-  </p>
-  <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
-</section>
-
-<section>
-  <h2>March 8 ❤️</h2>
-  <p>
-    Six months ago, something really special started.<br><br>
-    From our laughs to the quiet moments,<br>
-    you slowly became my favorite part of every day.
-  </p>
-</section>
-
-<section>
-  <h2>Our 6 Months In 💕</h2>
-  <h1 id="countdown">Loading...</h1>
-</section>
-
-<section>
-  <h2>One of My Favorite Moments 📸</h2>
-  <img src="us.jpg" alt="Us together">
-</section>
-
-<section>
-  <h2>Chandni ❤️</h2>
-  <p>
-    Our 6 months anniversary is nearby,<br>
-    and it made me think about how lucky I am.
-  </p>
-
-  <h1>
-    Will you be my Valentine<br>
-    this Valentine’s Day? 💕
-  </h1>
-
-  <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
-  <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
-
-  <p id="oops" style="display:none; color:#c2185b; font-size:1.2em;">
-    Oops… wrong move 😌
-  </p>
-</section>
-
-<section id="final">
-  <h1>Happy 6 Months, Chandni 💘</h1>
-  <p>
-    I knew it 😌<br><br>
-    Thank you for being my Valentine.<br>
-    I can’t wait to make many more memories with you ❤️
-  </p>
-  <p>Screenshot this and send it to me 😏💖</p>
-</section>
-
-<!-- 🔒 Hidden Gallery (QR opens here) -->
-<section id="gallery">
-  <h1>Our Little Memories 📸</h1>
-  <p>
-    These moments are just ours.<br>
-    Each one means more than it looks ❤️
-  </p>
-
-  <img src="pic1.jpg">
-  <img src="pic2.jpg">
-  <img src="pic3.jpg">
-</section>
-
-<script>
-  function startMusic() {
-    document.getElementById("bgMusic").play();
-  }
-
-  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "It’s today 💘";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-
-    document.getElementById("countdown").innerHTML =
-      `${days} Days ${hours} Hours ${mins} Minutes`;
-  }, 1000);
-
-  function sayYes() {
-    document.getElementById("final").style.display = "block";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-
-    for (let i = 0; i < 30; i++) createHeart();
-  }
-
-  function wrongMove() {
-    document.getElementById("oops").style.display = "block";
-    document.getElementById("noBtn").remove();
-
-    const yesBtn = document.getElementById("yesBtn");
-    yesBtn.innerHTML = "YES 😤💖";
-    yesBtn.style.transform = "scale(1.2)";
-  }
-
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 3000);
-  }
-</script>
-
-</body>
-</html>    }
-
-    #final {
-      display: none;
-    }
-
-    .heart {
-      position: fixed;
-      bottom: 0;
-      font-size: 24px;
-      animation: floatUp 3s linear forwards;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-250px); opacity: 0; }
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🎵 Music -->
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-</audio>
-
-<section>
-  <h1>Hey Chandni 💌</h1>
-  <p>
-    I made something just for you.<br>
-    Because what we have deserves more than just a message.
-  </p>
-  <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
-</section>
-
-<section>
-  <h2>March 8 ❤️</h2>
-  <p>
-    Six months ago, something really special started.<br><br>
-    From our laughs to the quiet moments,<br>
-    you slowly became my favorite part of every day.
-  </p>
-</section>
-
-<section>
-  <h2>Our 6 Months In 💕</h2>
-  <h1 id="countdown">Loading...</h1>
-</section>
-
-<section>
-  <h2>One of My Favorite Moments 📸</h2>
-  <img src="us.jpg" alt="Us together">
-</section>
-
-<section>
-  <h2>Chandni ❤️</h2>
-  <p>
-    Our 6 months anniversary is nearby,<br>
-    and it made me think about how lucky I am.
-  </p>
-
-  <h1>
-    Will you be my Valentine<br>
-    this Valentine’s Day? 💕
-  </h1>
-
-  <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
-  <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
-
-  <p id="oops" style="display:none; color:#c2185b; font-size:1.2em;">
-    Oops… wrong move 😌
-  </p>
-</section>
-
-<section id="final">
-  <h1>Happy 6 Months, Chandni 💘</h1>
-  <p>
-    I knew it 😌<br><br>
-    Thank you for being my Valentine.<br>
-    I can’t wait to make many more memories with you ❤️
-  </p>
-  <p>Screenshot this and send it to me 😏💖</p>
-</section>
-
-<script>
-  function startMusic() {
-    document.getElementById("bgMusic").play();
-  }
-
-  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "It’s today 💘";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-
-    document.getElementById("countdown").innerHTML =
-      `${days} Days ${hours} Hours ${mins} Minutes`;
-  }, 1000);
-
-  function sayYes() {
-    document.getElementById("final").style.display = "block";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-
-    for (let i = 0; i < 30; i++) createHeart();
-  }
-
-  function wrongMove() {
-    document.getElementById("oops").style.display = "block";
-    document.getElementById("noBtn").remove();
-
-    const yesBtn = document.getElementById("yesBtn");
-    yesBtn.innerHTML = "YES 😤💖";
-    yesBtn.style.transform = "scale(1.2)";
-  }
-
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 3000);
-  }
-</script>
-
-</body>
-</html></div>
 
 </body>
 </html>
