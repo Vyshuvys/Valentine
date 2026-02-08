@@ -4,14 +4,22 @@
   <title>Be My Valentine 💘</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+
   <style>
     body {
+      margin: 0;
       font-family: Inter, sans-serif;
       background: linear-gradient(#fff0f5, #ffe6ec);
       text-align: center;
       padding: 80px 20px;
+      overflow-x: hidden;
     }
-    h1 { font-family: Playfair Display; color: #c2185b; }
+
+    h1 {
+      font-family: Playfair Display;
+      color: #c2185b;
+    }
+
     button {
       padding: 14px 30px;
       border-radius: 30px;
@@ -20,11 +28,36 @@
       margin: 10px;
       cursor: pointer;
     }
+
     .yes { background: #e91e63; color: white; }
     .no { background: #ddd; }
+
+    #oops {
+      display: none;
+      color: #c2185b;
+      font-size: 1.2em;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 24px;
+      animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-250px); opacity: 0; }
+    }
   </style>
 </head>
+
 <body>
+
+<!-- 🎵 Music -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
 
 <h1>Chandni ❤️</h1>
 <p>Will you be my Valentine this Valentine’s Day? 💕</p>
@@ -32,9 +65,52 @@
 <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
 <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
 
-<p id="oops" style="display:none; color:#c2185b;">Oops… wrong move 😌</p>
+<p id="oops">Oops… wrong move 😌</p>
 
 <script>
+  function wrongMove() {
+    document.getElementById("oops").style.display = "block";
+    document.getElementById("noBtn").remove();
+
+    const yesBtn = document.getElementById("yesBtn");
+    yesBtn.innerText = "YES 😤💖";
+    yesBtn.style.transform = "scale(1.2)";
+  }
+
+  function sayYes() {
+    // Play music
+    document.getElementById("bgMusic").play();
+
+    // Show final message
+    document.body.innerHTML = `
+      <h1>Happy 6 Months Chandni 💘</h1>
+      <p>
+        I knew it 😌<br><br>
+        Thank you for being my Valentine.<br>
+        I can’t wait to make more memories with you ❤️
+      </p>
+      <p>Screenshot this and send it to me 😏</p>
+    `;
+
+    // Celebration hearts
+    for (let i = 0; i < 40; i++) {
+      createHeart();
+    }
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+  }
+</script>
+
+</body>
+</html><script>
   function wrongMove() {
     document.getElementById("oops").style.display = "block";
     document.getElementById("noBtn").remove();
