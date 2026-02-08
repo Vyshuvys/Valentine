@@ -45,6 +45,7 @@
       font-size: 1em;
       cursor: pointer;
       margin: 10px;
+      transition: 0.2s;
     }
 
     .yes {
@@ -126,18 +127,18 @@
   <h2>Chandni ❤️</h2>
   <h1>Will you be my Valentine? 💕</h1>
 
-  <button class="yes" onclick="sayYes()">Yes 💖</button>
-  <button class="no" onclick="wrongMove()">No 😏</button>
+  <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
+  <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
 
-  <p id="oops" style="display:none; color:#c2185b;">
+  <p id="oops" style="display:none; color:#c2185b; font-size:1.2em;">
     Oops… wrong move 😌
   </p>
 </section>
 
 <section id="final">
-  <h1>Happy 6 Months ❤️</h1>
+  <h1>Yes! It’s a date 💖</h1>
   <p>
-    Thank you for being my Valentine.<br>
+    Thank you for being my Valentine ❤️<br>
     I can’t wait to make many more memories with you.
   </p>
 
@@ -171,17 +172,22 @@
     document.getElementById("bgMusic").play();
   }
 
+  function wrongMove() {
+    document.getElementById("oops").style.display = "block";
+    document.getElementById("noBtn").style.display = "none";
+
+    const yesBtn = document.getElementById("yesBtn");
+    yesBtn.innerHTML = "YES 😤💖";
+    yesBtn.style.transform = "scale(1.2)";
+  }
+
   function sayYes() {
     document.getElementById("final").style.display = "block";
-    for (let i = 0; i < 25; i++) createHeart();
+    for (let i = 0; i < 30; i++) createHeart();
   }
 
   function showGallery() {
     document.getElementById("gallery").style.display = "block";
-  }
-
-  function wrongMove() {
-    document.getElementById("oops").style.display = "block";
   }
 
   function createHeart() {
