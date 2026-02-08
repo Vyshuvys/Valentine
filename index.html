@@ -125,17 +125,29 @@
   </section>
 
   <section>
-    <h2>So I have a question…</h2>
-    <h1>Will you be my Valentine? 💕</h1>
+  <h2>Chandni ❤️</h2>
+  <p>
+    Our 6 months anniversary is nearby,<br>
+    and it made me think about how special this time with you has been.
+  </p>
 
-    <div class="btns">
-      <button class="yes" onclick="sayYes()">Yes 💖</button>
-      <button class="no" onmouseover="moveButton(this)">No 😏</button>
-    </div>
+  <h1>
+    Will you be my Valentine<br>
+    this Valentine’s Day? 💕
+  </h1>
+
+  <div class="btns" id="buttons">
+    <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
+    <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
+  </div>
+
+  <p id="oops" style="display:none; font-size:1.2em; margin-top:20px; color:#c2185b;">
+    Oops… wrong move 😌
+  </p>
   </section>
 
   <section id="final">
-    <h1>Happy 6 Months, My Valentine 💘</h1>
+    <h1>Happy 6 Months, Chandni 💘</h1>
     <p>
       I knew it 😌<br><br>
       I’m so lucky to have you.<br>
@@ -144,33 +156,39 @@
   </section>
 
   <script>
-    function sayYes() {
-      document.getElementById("final").style.display = "flex";
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  function sayYes() {
+    document.getElementById("final").style.display = "flex";
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 
-      for (let i = 0; i < 30; i++) {
-        createHeart();
-      }
+    for (let i = 0; i < 30; i++) {
+      createHeart();
     }
+  }
 
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.bottom = "0px";
-      document.body.appendChild(heart);
+  function wrongMove() {
+    document.getElementById("oops").style.display = "block";
 
-      setTimeout(() => {
-        heart.remove();
-      }, 3000);
-    }
+    const noBtn = document.getElementById("noBtn");
+    noBtn.remove();
 
-    function moveButton(btn) {
-      btn.style.position = "absolute";
-      btn.style.top = Math.random() * 80 + "vh";
-      btn.style.left = Math.random() * 80 + "vw";
-    }
+    const yesBtn = document.getElementById("yesBtn");
+    yesBtn.innerHTML = "YES 😤💖";
+    yesBtn.style.backgroundColor = "#c2185b";
+    yesBtn.style.transform = "scale(1.2)";
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "0px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 3000);
+  }
   </script>
 
 </body>
