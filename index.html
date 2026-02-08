@@ -1,40 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>For Chandni ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffe6ec);
+      color: #333;
       text-align: center;
-      font-family: Inter, sans-serif;
-      background: linear-gradient(#fff0f5, #ffe6ec);
+      overflow-x: hidden;
     }
-    h1 { font-family: Playfair Display; color: #c2185b; }
+
+    section {
+      padding: 120px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #c2185b;
+    }
+
+    h1 {
+      font-size: 2.6em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.15em;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
     button {
       padding: 14px 30px;
       border-radius: 30px;
       border: none;
-      background: #e91e63;
-      color: white;
       font-size: 1em;
       cursor: pointer;
-      margin-top: 20px;
+      margin: 10px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .yes {
+      background: #e91e63;
+      color: white;
+    }
+
+    .no {
+      background: #ddd;
+    }
+
+    img {
+      max-width: 80%;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      margin-top: 30px;
+    }
+
+    #final {
+      display: none;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 24px;
+      animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-250px); opacity: 0; }
     }
   </style>
 </head>
+
 <body>
 
-<div>
+<!-- 🎵 Music -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<section>
   <h1>Hey Chandni 💌</h1>
-  <p>I made something just for you.</p>
-  <button onclick="location.href='page2.html'">Start 💖</button>
-</div>
+  <p>
+    I made something just for you.<br>
+    Because what we have deserves more than just a message.
+  </p>
+  <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
+</section>
+
+<section>
+  <h2>March 8 ❤️</h2>
+  <p>
+    Six months ago, something really special started.<br><br>
+    From our laughs to the quiet moments,<br>
+    you slowly became my favorite part of every day.
+  </p>
+</section>
+
+<section>
+  <h2>Our 6 Months In 💕</h2>
+  <h1 id="countdown">Loading...</h1>
+</section>
+
+<section>
+  <h2>One of My Favorite Moments 📸</h2>
+  <img src="us.jpg" alt="Us together">
+</section>
+
+<section>
+  <h2>Chandni ❤️</h2>
+  <p>
+    Our 6 months anniversary is nearby,<br>
+    and it made me think about how lucky I am.
+  </p>
+
+  <h1>
+    Will you be my Valentine<br>
+    this Valentine’s Day? 💕
+  </h1>
+
+  <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
+  <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
+
+  <p id="oops" style="display:none; color:#c2185b; font-size:1.2em;">
+    Oops… wrong move 😌
+  </p>
+</section>
+
+<section id="final">
+  <h1>Happy 6 Months, Chandni 💘</h1>
+  <p>
+    I knew it 😌<br><br>
+    Thank you for being my Valentine.<br>
+    I can’t wait to make many more memories with you ❤️
+  </p>
+  <p>Screenshot this and send it to me 😏💖</p>
+</section>
+
+<script>
+  function startMusic() {
+    document.getElementById("bgMusic").play();
+  }
+
+  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").innerHTML = "It’s today 💘";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("countdown").innerHTML =
+      `${days} Days ${hours} Hours ${mins} Minutes`;
+  }, 1000);
+
+  function sayYes() {
+    document.getElementById("final").style.display = "block";
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+
+    for (let i = 0; i < 30; i++) createHeart();
+  }
+
+  function wrongMove() {
+    document.getElementById("oops").style.display = "block";
+    document.getElementById("noBtn").remove();
+
+    const yesBtn = document.getElementById("yesBtn");
+    yesBtn.innerHTML = "YES 😤💖";
+    yesBtn.style.transform = "scale(1.2)";
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+  }
+</script>
+
+</body>
+</html></div>
 
 </body>
 </html>
