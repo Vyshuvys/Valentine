@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hey Love 💕</title>
+  <title>For Chandni ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background: linear-gradient(to bottom, #fff0f5, #ffe6ec);
-      color: #333;
       text-align: center;
+      color: #333;
+      overflow-x: hidden;
     }
 
     section {
@@ -32,13 +33,12 @@
     }
 
     h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
+      font-size: 2.6em;
     }
 
     p {
+      max-width: 650px;
       font-size: 1.1em;
-      max-width: 600px;
       line-height: 1.6;
     }
 
@@ -47,13 +47,13 @@
     }
 
     button {
-      padding: 14px 26px;
-      font-size: 1em;
-      border: none;
+      padding: 14px 30px;
       border-radius: 30px;
-      cursor: pointer;
+      border: none;
+      font-size: 1em;
       margin: 10px;
-      transition: transform 0.2s;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
     button:hover {
@@ -61,12 +61,12 @@
     }
 
     .yes {
-      background-color: #e91e63;
+      background: #e91e63;
       color: white;
     }
 
     .no {
-      background-color: #ddd;
+      background: #ddd;
     }
 
     #final {
@@ -75,9 +75,156 @@
 
     .heart {
       position: fixed;
+      bottom: 0;
       font-size: 24px;
       animation: floatUp 3s linear forwards;
     }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-200px); opacity: 0; }
+    }
+
+    img {
+      max-width: 80%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<section>
+  <h1>Hey Chandni 💌</h1>
+  <p>
+    I made something just for you.<br>
+    Because what we have deserves more than just a message.
+  </p>
+  <button class="yes" onclick="startMusic()">Tap to Begin 💖</button>
+</section>
+
+<section>
+  <h2>March 8 ❤️</h2>
+  <p>
+    Six months ago, something really special started.<br><br>
+    From our conversations and laughs<br>
+    to the little moments that only we understand —<br>
+    you became my favorite part of every day.
+  </p>
+</section>
+
+<section>
+  <h2>Our 6 Months In 💕</h2>
+  <h1 id="countdown">Loading...</h1>
+</section>
+
+<section>
+  <h2>One of My Favorite Moments 📸</h2>
+  <!-- Optional photo -->
+  <img src="us.jpg" alt="Us together">
+</section>
+
+<section>
+  <h2>Chandni ❤️</h2>
+  <p>
+    Our 6 months anniversary is nearby,<br>
+    and it made me think about how special this time with you has been.
+  </p>
+
+  <h1>
+    Will you be my Valentine<br>
+    this Valentine’s Day? 💕
+  </h1>
+
+  <div class="btns">
+    <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
+    <button class="no" id="noBtn" onclick="wrongMove()">No 😏</button>
+  </div>
+
+  <p id="oops" style="display:none; font-size:1.2em; margin-top:20px; color:#c2185b;">
+    Oops… wrong move 😌
+  </p>
+</section>
+
+<section id="final">
+  <h1>Happy 6 Months, Chandni 💘</h1>
+  <p>
+    I knew it 😌<br><br>
+    I’m so lucky to have you.<br>
+    I can’t wait to make more memories together ❤️
+  </p>
+  <p style="margin-top:20px;">
+    Screenshot this and send it to me 😏💖
+  </p>
+</section>
+
+<script>
+  /* 🎶 Music */
+  function startMusic() {
+    document.getElementById("bgMusic").play();
+  }
+
+  /* ⏳ Countdown */
+  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").innerHTML = "It’s today 💘";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("countdown").innerHTML =
+      `${days} Days ${hours} Hours ${mins} Minutes`;
+  }, 1000);
+
+  /* 💖 YES */
+  function sayYes() {
+    document.getElementById("final").style.display = "flex";
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+
+    for (let i = 0; i < 30; i++) {
+      createHeart();
+    }
+  }
+
+  /* 😏 NO */
+  function wrongMove() {
+    document.getElementById("oops").style.display = "block";
+    document.getElementById("noBtn").remove();
+
+    const yesBtn = document.getElementById("yesBtn");
+    yesBtn.innerHTML = "YES 😤💖";
+    yesBtn.style.transform = "scale(1.2)";
+    yesBtn.style.background = "#c2185b";
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+  }
+</script>
+
+</body>
+</html>    }
 
     @keyframes floatUp {
       0% {
