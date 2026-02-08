@@ -93,7 +93,9 @@
 </head>
 
 <body>
-
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
   <section>
     <h1>Hey love 💌</h1>
     <p>
@@ -103,12 +105,13 @@
   </section>
 
   <section>
-    <h2>March 8 ❤️</h2>
-    <p>
-      Six months ago, something really special started.<br><br>
-      I didn’t know how much you’d end up meaning to me,
-      but here we are… and I wouldn’t trade this for anything.
-    </p>
+  <h2>March 8 ❤️</h2>
+  <p>
+    Six months ago, something really special started.<br><br>
+    From our conversations, our laughs,
+    and the little moments that only we understand —
+    you slowly became my favorite part of every day.
+  </p>
   </section>
 
   <section>
@@ -130,7 +133,26 @@
     Our 6 months anniversary is nearby,<br>
     and it made me think about how special this time with you has been.
   </p>
+<script>
+  const targetDate = new Date("March 8, 2026 00:00:00").getTime();
 
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").innerHTML = "It’s today 💘";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("countdown").innerHTML =
+      `${days} Days ${hours} Hours ${mins} Minutes`;
+  }, 1000);
+</script>.
   <h1>
     Will you be my Valentine<br>
     this Valentine’s Day? 💕
@@ -156,7 +178,24 @@
   </section>
 
   <script>
-  function sayYes() {
+  function sayYes(const targetDate = new Date("March 8, 2026 00:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").innerHTML = "It’s today 💘";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("countdown").innerHTML =
+      `${days} Days ${hours} Hours ${mins} Minutes`;
+  }, 1000);) {
     document.getElementById("final").style.display = "flex";
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 
